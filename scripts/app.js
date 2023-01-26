@@ -1,4 +1,12 @@
+let gameData = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+];
+
 let editedPlayer = 0;
+let activePlayer = 0;
+let currentRound = 1;
 
 const players = [
     {
@@ -18,6 +26,10 @@ const formElement = document.querySelector('form');
 const errorsOutputElement = document.getElementById('config-errors');
 
 const gameAreaElement = document.getElementById('active-game');
+const activePlayerElement = document.getElementById('active-player-name');
+const gameFieldElements = document.querySelectorAll('#game-board li');
+
+const gameOverElement = document.getElementById('game-over');
 
 const startNewGameBtnElement = document.getElementById('start-game-btn');
 
@@ -34,3 +46,7 @@ backdropElement.addEventListener('click', closePlayerConfig);
 formElement.addEventListener('submit', savePlayerConfig);
 
 startNewGameBtnElement.addEventListener('click', startNewGame);
+
+for (const gameFieldElement of gameFieldElements){
+    gameFieldElement.addEventListener('click', selectGameField);
+}
